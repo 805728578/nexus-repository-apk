@@ -72,7 +72,7 @@
       <!--
       Ensure use of Java 8, as required by NXRM
       -->
-     <!--  <plugin>
+      <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>1.4.1</version>
         <executions>
@@ -90,11 +90,11 @@
             </configuration>
           </execution>
         </executions>
-      </plugin> -->
+      </plugin>
        <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.14</version>
+          <version>1.6.8</version>
           <extensions>true</extensions>
           <configuration>
             <serverId>rso</serverId>
