@@ -15,14 +15,14 @@
   <parent>
     <groupId>org.sonatype.nexus.plugins</groupId>
     <artifactId>nexus-plugins</artifactId>
-    <version>3.41.0-01</version>
+    <version>3.69.0-02</version>
   </parent>
 
   <artifactId>apk-parent</artifactId>
-  <version>0.0.27-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>pom</packaging>
 
-  <inceptionYear>2019</inceptionYear>
+  <inceptionYear>2024</inceptionYear>
 
   <modules>
     <module>nexus-repository-apk</module>
