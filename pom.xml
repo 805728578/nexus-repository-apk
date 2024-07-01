@@ -46,14 +46,12 @@
 		<nxrm-version>3.69.0-02</nxrm-version>
 	</properties>
 
-	<repositories>
-		<!-- ensure we can find the parent pom when starting from an empty local 
-			.m2 repository -->
+	<!-- <repositories>
 		<repository>
 			<id>rso-public-grid</id>
 			<url>https://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
 		</repository>
-	</repositories>
+	</repositories> -->
 
 	<build>
 		<plugins>
@@ -65,7 +63,7 @@
 					<!-- Something in the pom hierarchy overrides the default 'pushChanges 
 						== true', so we reset that here. -->
 					<pushChanges>true</pushChanges>
-					<releaseProfiles>gpg-sign</releaseProfiles>
+					<!-- <releaseProfiles>gpg-sign</releaseProfiles> -->
 					<!-- CI build runs out of memory during release, with error like this: 
 						Failed to execute goal org.apache.maven.plugins:maven-release-plugin:2.5.2:prepare 
 						(default-cli) on project nexus-repository-base: Maven execution failed, exit 
@@ -99,11 +97,11 @@
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>1.6.14</version>
 				<extensions>true</extensions>
-				<configuration>
+				<!-- <configuration>
 					<serverId>rso</serverId>
 					<nexusUrl>https://repository.sonatype.org/</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration>
+				</configuration> -->
 			</plugin>
 		</plugins>
 	</build>

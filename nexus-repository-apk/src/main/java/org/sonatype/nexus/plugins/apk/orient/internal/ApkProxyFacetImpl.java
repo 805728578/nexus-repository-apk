@@ -92,10 +92,10 @@ public class ApkProxyFacetImpl
     TokenMatcher.State matcherState = pathUtils.matcherState(context);
     switch (assetKind) {
       case ARCHIVE:
-        log.debug("ARCHIVE" + pathUtils.path(matcherState));
+        log.info("ARCHIVE" + pathUtils.path(matcherState));
         return putArchive(pathUtils.path(matcherState), pathUtils.name(matcherState), pathUtils.version(matcherState), content);
       case APK_INDEX:
-        log.debug(("APK_INDEX" + pathUtils.path(matcherState)));
+        log.info(("APK_INDEX" + pathUtils.path(matcherState)));
         return putIndex(pathUtils.path(matcherState), content);
       default:
         throw new IllegalStateException();

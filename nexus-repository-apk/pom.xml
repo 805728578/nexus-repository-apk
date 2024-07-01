@@ -72,16 +72,26 @@
         <artifactId>yuicompressor-maven-plugin</artifactId>
       </plugin>
       <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.8.1</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+				<encoding>UTF-8</encoding>
+			</configuration>
+	  </plugin>
+      <!-- <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.20</version>
         <configuration>
           <useSystemClassLoader>false</useSystemClassLoader>
         </configuration>
-      </plugin>
+      </plugin> -->
       <!--
       during 'verify' phase, ensure the new repository format plugin is installed locally, for use by ITs.
       -->
-      <plugin>
+      <!-- <plugin>
         <artifactId>maven-install-plugin</artifactId>
         <executions>
           <execution>
@@ -91,7 +101,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 </project>
