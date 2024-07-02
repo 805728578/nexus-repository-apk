@@ -25,7 +25,6 @@ import org.sonatype.nexus.plugins.apk.internal.AssetKind;
 import org.sonatype.nexus.repository.content.facet.ContentFacetSupport;
 import org.sonatype.nexus.repository.content.fluent.FluentAsset;
 import org.sonatype.nexus.repository.content.fluent.FluentComponent;
-import org.sonatype.nexus.repository.content.fluent.String;
 import org.sonatype.nexus.repository.content.store.FormatStoreManager;
 import org.sonatype.nexus.repository.view.Content;
 import org.sonatype.nexus.repository.view.Payload;
@@ -63,6 +62,7 @@ public class ApkContentFacetImpl
           .name(filename)
           .version(version)
           .getOrCreate();
+
       return assets().path(assetPath)
           .component(component)
           .kind(AssetKind.ARCHIVE.name())

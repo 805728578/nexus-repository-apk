@@ -30,6 +30,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static org.sonatype.nexus.common.hash.HashAlgorithm.SHA1;
+import static org.sonatype.nexus.repository.storage.ComponentEntityAdapter.P_GROUP;
 import static org.sonatype.nexus.repository.storage.ComponentEntityAdapter.P_VERSION;
 import static org.sonatype.nexus.repository.storage.MetadataNodeEntityAdapter.P_NAME;
 
@@ -64,7 +65,31 @@ public class ApkDataAccess
     }
     return null;
   }
-
+  /**
+   * Find a component by its name and tag (version)
+   *
+   * @return found component of null if not found
+   */
+  @Nullable
+  public Component findComponent(final StorageTx tx,
+                                 final Repository repository,
+                                 final String path,
+                                 final String name,
+                                 final String version)
+  {
+    Iterable<Component> components = tx.findComponents(
+        Query.builder()
+            .where(P_GROUP).eq(path)
+            .and(P_NAME).eq(name)
+            .and(P_VERSION).eq(version)
+            .build(),
+        singletonList(repository)
+    );
+    if (components.iterator().hasNext()) {
+      return components.iterator().next();
+    }
+    return null;
+  }
   /**
    * Find an asset by its name.
    *

@@ -120,7 +120,7 @@ public class ApkProxyFacetImpl
     Bucket bucket = tx.findBucket(getRepository());
     String assetPath = pathUtils.archivePath(path, name, version);
     log.info("ARCHIVE:" + assetPath);
-    Component component = dataAccess.findComponent(tx, getRepository(), name, version);
+    Component component = dataAccess.findComponent(tx, getRepository(),path, name, version);
     if (component == null) {
       component = tx.createComponent(bucket, getRepository().getFormat())
           .name(name)
