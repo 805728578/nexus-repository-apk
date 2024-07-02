@@ -46,15 +46,21 @@
 		<nxrm-version>3.69.0-02</nxrm-version>
 	</properties>
 
-	<!-- <repositories>
-		<repository>
-			<id>rso-public-grid</id>
-			<url>https://repository.sonatype.org/content/groups/sonatype-public-grid/</url>
-		</repository>
-	</repositories> -->
+	<!-- <repositories> <repository> <id>rso-public-grid</id> <url>https://repository.sonatype.org/content/groups/sonatype-public-grid/</url> 
+		</repository> </repositories> -->
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -97,11 +103,8 @@
 				<artifactId>nexus-staging-maven-plugin</artifactId>
 				<version>1.6.14</version>
 				<extensions>true</extensions>
-				<!-- <configuration>
-					<serverId>rso</serverId>
-					<nexusUrl>https://repository.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>true</autoReleaseAfterClose>
-				</configuration> -->
+				<!-- <configuration> <serverId>rso</serverId> <nexusUrl>https://repository.sonatype.org/</nexusUrl> 
+					<autoReleaseAfterClose>true</autoReleaseAfterClose> </configuration> -->
 			</plugin>
 		</plugins>
 	</build>
