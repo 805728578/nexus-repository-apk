@@ -92,10 +92,10 @@ public class ApkProxyFacetImpl
     TokenMatcher.State matcherState = pathUtils.matcherState(context);
     switch (assetKind) {
       case ARCHIVE:
-        log.info("ARCHIVE" + pathUtils.path(matcherState));
+        log.debug("ARCHIVE" + pathUtils.path(matcherState));
         return putArchive(pathUtils.path(matcherState), pathUtils.name(matcherState), pathUtils.version(matcherState), content);
       case APK_INDEX:
-        log.info(("APK_INDEX" + pathUtils.path(matcherState)));
+        log.debug(("APK_INDEX" + pathUtils.path(matcherState)));
         return putIndex(pathUtils.path(matcherState), content);
       default:
         throw new IllegalStateException();
@@ -119,12 +119,13 @@ public class ApkProxyFacetImpl
     StorageTx tx = UnitOfWork.currentTx();
     Bucket bucket = tx.findBucket(getRepository());
     String assetPath = pathUtils.archivePath(path, name, version);
-
+    log.info("ARCHIVE:" + assetPath);
     Component component = dataAccess.findComponent(tx, getRepository(), name, version);
     if (component == null) {
       component = tx.createComponent(bucket, getRepository().getFormat())
           .name(name)
           .version(version);
+      component.group(path);
     }
     tx.saveComponent(component);
 
@@ -153,7 +154,7 @@ public class ApkProxyFacetImpl
     Bucket bucket = tx.findBucket(getRepository());
 
     String assetPath = pathUtils.buildIndexPath(path);
-
+    log.info("APK_INDEX:" + assetPath);
     Asset asset = dataAccess.findAsset(tx, bucket, assetPath);
     if (asset == null) {
       asset = tx.createAsset(bucket, getRepository().getFormat());
